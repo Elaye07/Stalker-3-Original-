@@ -24,6 +24,31 @@
 
 #include "TXLib.h"
 
+struct Stalker
+{
+    int x;
+    int y;
+    int w;
+    int h;
+    HDC image;
+
+
+
+    void draw()
+    {
+
+
+    txTransparentBlt(txDC(), x, y, w, h, image);
+
+
+
+    }
+
+};
+
+
+
+
 struct Button
 {
     int x;
@@ -37,7 +62,7 @@ struct Button
     {
 
     txSetColor (TX_WHITE, 3);
-    txSetFillColor (TX_CYAN);
+    txSetFillColor (TX_RED);
     Win32::RoundRect(txDC(), x, y, x+w, y+h, 30, 30);
     txSelectFont("Areal", 30);
     txDrawText(x, y, x+w, y+h, text);
@@ -49,6 +74,11 @@ struct Button
         return  (txMouseX()>x && txMouseX()<x+w &&
                 txMouseY()>y && txMouseY()<y+h &&
                 txMouseButtons() == 1 && visible);
+
+
+
+
+
     }
 
 };
@@ -62,12 +92,12 @@ string PAGE = "menu";
 
 
 
-Button btn0 = {100, 100, 200, 45, "Start", true};
-Button btn1 = {100, 150, 200, 45, "Rules", true};
-Button btn2 = {100, 200, 200, 45, "Settings", true};
-Button btn3 = {100, 250, 200, 45, "About program", true};
-Button btn4 = {100, 300, 200, 45, "Exit", true};
-
+Button btn0 = {280, 100, 200, 45, "Start", true};
+Button btn1 = {280, 165, 200, 45, "Rules", true};
+Button btn2 = {280, 230, 200, 45, "Settings", true};
+Button btn3 = {280, 295, 200, 45, "About program", true};
+Button btn4 = {280, 370, 200, 45, "Exit", true};
+Stalker stalker = {90, 310, 120, 200, txLoadImage ("Ñòàëêåð.bmp")};
 
     while(!(btn4.click()))
     {
@@ -164,7 +194,10 @@ Button btn4 = {100, 300, 200, 45, "Exit", true};
      txRectangle(800,600,0,0);
      txDrawText (0, 0, 260, 80, "(åsc äëÿ âûõîäà)  ");
      txSelectFont ("Areal", 40);
-     txDrawText (100, 100, 665, 190, "........");
+     txDrawText (100, 100, 665, 190, "Âîîáùå, ýòî íå íàñòðîéêè");
+     txDrawText (100, 150, 665, 230, "Êîðî÷å, èãðà ñäåëàíà");
+     txDrawText (100, 210, 665, 280, "ÑÓÃÓÁÎ Â ÐÀÇÂËÅÊÀÒÅËÜÍÛÕ ÖÅËßÕ!");
+     txDrawText (100, 400, 665, 460, "Ïðèÿòíîé èãðû!!!");
      if(GetAsyncKeyState(VK_ESCAPE))
      {
       PAGE = "menu";
@@ -198,6 +231,7 @@ Button btn4 = {100, 300, 200, 45, "Exit", true};
     txSetFillColor(TX_GREEN);
     txRectangle(0,600,280,510);
     txDrawText (0, 0, 260, 80, "(åsc äëÿ âûõîäà)");
+    stalker.draw();
     if(GetAsyncKeyState(VK_ESCAPE))
      {
     PAGE = "menu";
@@ -212,6 +246,7 @@ Button btn4 = {100, 300, 200, 45, "Exit", true};
     txSleep(50);
 
     }
+
 
     txDisableAutoPause();
     return 0;
