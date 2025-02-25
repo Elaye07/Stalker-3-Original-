@@ -47,6 +47,27 @@ struct Stalker
 };
 
 
+struct Shell
+{
+    int x;
+    int y;
+    int w;
+    int h;
+    HDC image;
+    HDC image_scary; 
+
+
+    void draw()
+    {
+
+
+    txTransparentBlt(txDC(), x, y, w, h, image, image_scary);
+
+
+
+    }
+
+};
 
 
 struct Button
@@ -89,7 +110,7 @@ int main()
     txTextCursor (false);
 
 string PAGE = "menu";
-
+int SCARY = 0;
 
 
 Button btn0 = {280, 100, 200, 45, "Start", true};
@@ -97,7 +118,10 @@ Button btn1 = {280, 165, 200, 45, "Rules", true};
 Button btn2 = {280, 230, 200, 45, "Settings", true};
 Button btn3 = {280, 295, 200, 45, "About program", true};
 Button btn4 = {280, 370, 200, 45, "Exit", true};
-Stalker stalker = {105, 410, 100, 100, txLoadImage ("Сталкер.bmp")};
+Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadimage ("")};
+//Shell shl0 = {};
+
+
 
     while(!(btn4.click()))
     {
@@ -236,6 +260,67 @@ Stalker stalker = {105, 410, 100, 100, txLoadImage ("Сталкер.bmp")};
      {
     PAGE = "menu";
      }
+
+    if (GetAsyncKeyState(VK_RIGHT))
+    {
+     stalker.x += 20;
+    }
+
+
+        if (stalker.x > 220)
+        {
+         stalker.x -= 20;
+        }
+
+
+
+
+    if (GetAsyncKeyState(VK_LEFT))
+    {
+     stalker.x -= 20;
+    }
+
+
+        if (stalker.x < 0)
+        {
+         stalker.x += 20;
+        }
+
+
+     stalker.y += 12;
+     if (GetAsyncKeyState(VK_SPACE))
+    {
+     stalker.y -= 35;
+    }
+
+         if (stalker.y > 310)
+        {
+         stalker.y = 310;
+        }
+
+
+         if (stalker.y < 53)
+        {
+         stalker.y = 53;
+        }
+
+
+     if (GetAsyncKeyState(VK_DOWN) and stalker.y < 260)
+    {
+     stalker.y += 45;
+    }
+
+    if (GetAsyncKeyState('q') and GetAsyncKeyState('e'))
+    {
+     SCARY = 666;
+    }
+
+    if (SCARY == 666)
+    {
+//     stalker.image = ""
+    }
+
+
 
     }
 

@@ -4,16 +4,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 <tt>
-Build started on: <u>16-01-2025 at 10:25.58</u><br />
-Build ended on: <u>16-01-2025 at 10:26.10</u><p />
+Build started on: <u>25-02-2025 at 09:23.05</u><br />
+Build ended on: <u>25-02-2025 at 09:23.09</u><p />
 <b>-------------- Build: Debug in Игра №1 (compiler: NOT FOR PROJECTS! = MinGW GCC + Strict + Fast + Save (Requires Git))---------------</b><br />
-g++git-auto.bat "C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\main.cpp" -o "bin\Debug\Игра №1.exe" -mwindows  -Wall -fexceptions  -g  -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op -Wno-missing-field-initializers -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -fexceptions -pipe -D_DEBUG -D_EJUDGE_CLIENT_SIDE -D_EJC<br />
+g++git-auto.bat "C:\Users\2023\Downloads\Stalker-3-Original--main\main.cpp" -o "bin\Debug\Игра №1.exe" -mwindows  -Wall -fexceptions  -g  -Wall -Wextra -Weffc++ -Wcast-align -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wfloat-equal -Wformat-security -Wformat=2 -Wignored-qualifiers -Winit-self -Winline -Wlogical-op -Wmain -Wmissing-declarations -Wno-missing-field-initializers -Wmissing-include-dirs -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wredundant-decls -Wshadow -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wswitch-default -Wswitch-enum -Wtype-limits -Wundef -Wunreachable-code -Wwrite-strings -fexceptions -g -pipe -D_DEBUG -D_EJUDGE_CLIENT_SIDE -D_EJC<br />
 ------------------------------------------------------------------------------------------------------<br />
-Compilation is OK<br />
+Compilation ERRORS:<br />
+<br />
+In file included from C:\Users\2023\Downloads\Stalker-3-Original--main\main.cpp:25:0:<br />
+C:\Users\2023\Downloads\Stalker-3-Original--main\main.cpp: In member function 'void Stalker::draw()':<br />
+<font color="#ff0000">C:\Users\2023\Downloads\Stalker-3-Original--main\main.cpp:42:5: error: no matching function for call to 'txTransparentBlt(HDC__*&amp;, int&amp;, int&amp;, int&amp;, int&amp;, HDC__*&amp;, HDC__*&amp;)'</font><br />
+     txTransparentBlt(txDC(), x, y, w, h, image_scary, image)<br />
+     ^<br />
+C:\Users\2023\Downloads\Stalker-3-Original--main\main.cpp:42:5: note: candidates are:<br />
+c:\codeblocks\codeblocks\mingw\include\txlib.h:13743:6: note: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF)<br />
+ bool txTransparentBlt (HDC destImage,   double xDest, double yDest, double width, double height,<br />
+      ^<br />
+c:\codeblocks\codeblocks\mingw\include\txlib.h:13743:6: note:   no known conversion for argument 7 from 'HDC' to 'double'<br />
+c:\codeblocks\codeblocks\mingw\include\txlib.h:13823:6: note: bool {anonymous}::TX::txTransparentBlt(double, double, HDC, COLORREF, double, double)<br />
+ bool txTransparentBlt (double xDest, double yDest, HDC sourceImage,<br />
+      ^<br />
+c:\codeblocks\codeblocks\mingw\include\txlib.h:13823:6: note:   candidate expects 6 arguments, 7 provided<br />
+<font color="#ff0000">C:\Users\2023\Downloads\Stalker-3-Original--main\main.cpp:45:5: error: expected ';' before '}' token</font><br />
+     }<br />
+     ^<br />
 ------------------------------------------------------------------------------------------------------<br />
-ЌҐЇаҐ¤ўЁ¤Ґ­­®Ґ Ї®пў«Ґ­ЁҐ: /€Ја .<br />
-<font color="#a00000">Process terminated with status 255 (0 minutes, 11 seconds)</font><br />
-<font color="#a00000">0 errors, 0 warnings (0 minutes, 11 seconds)</font><br />
+Autosaving to the Git repository in C:/Users/2023/Downloads/Stalker-3-Original--main/.git-auto/... <br />
+<font color="#a00000">Process terminated with status 1 (0 minutes, 4 seconds)</font><br />
+<font color="#a00000">2 errors, 0 warnings (0 minutes, 4 seconds)</font><br />
 </tt>
 </body>
 </html>
