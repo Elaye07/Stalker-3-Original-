@@ -24,51 +24,47 @@
 
 #include "TXLib.h"
 
+struct Bullet
+{
+    int x;
+    int y;
+    int w;
+    int h;
+    int s;
+    HDC image;
+
+
+    void draw()
+    {
+
+        txTransparentBlt(txDC(), x, y, w, h, image, 0, 0, TX_WHITE);
+
+    }
+
+ };
+
 struct Stalker
 {
     int x;
     int y;
     int w;
     int h;
+    HDC image;
+    HDC image_normal;
     HDC image_scary;
-    HDC image;
-
-
-
-    void draw()
-    {
-
-
-    txTransparentBlt(txDC(), x, y, w, h, image_scary, image)
-
-
-    }
-
-};
-
-
-struct Shell
-{
-    int x;
-    int y;
-    int w;
-    int h;
-    HDC image;
-
 
 
     void draw()
     {
 
 
-    txTransparentBlt(txDC(), x, y, w, h, image);
+    txTransparentBlt(txDC(), x, y, w, h, image, 0, 0, TX_WHITE);
 
 
 
     }
 
 };
-
 
 struct Button
 {
@@ -77,6 +73,8 @@ struct Button
     int w;
     int h;
     const char* text;
+    const char* text_normal;
+    const char* text_scary;
     bool visible;
 
     void draw()
@@ -103,25 +101,39 @@ struct Button
     }
 
 };
-//!GetAsyncKeyState(VK_ESCAPE)
+
 int main()
-    {
+{
     txCreateWindow (800, 600);
     txTextCursor (false);
 
 string PAGE = "menu";
+int random = 0;
+int hp = 100;
+int hard = 0;
 int SCARY = 0;
 
 
-Button btn0 = {280, 100, 200, 45, "Start", true};
-Button btn1 = {280, 165, 200, 45, "Rules", true};
-Button btn2 = {280, 230, 200, 45, "Settings", true};
-Button btn3 = {280, 295, 200, 45, "About program", true};
-Button btn4 = {280, 370, 200, 45, "Exit", true};
-Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage ("ГЛАЗ.bmp")};
-//Shell shl0 = {};
+Button btn0 = {125, 100, 200, 45, "Start", "Start", "_____", true};
+Button btn1 = {125, 165, 200, 45, "Rules", "Rules", "СМЕРТЬ", true};
+Button btn2 = {125, 230, 200, 45, "Settings", "Settings", "УЖЕ", true};
+Button btn3 = {125, 295, 200, 45, "About program", "About program", "БЛИЗКА", true};
+Button btn4 = {125, 370, 200, 45, "Exit", "Exit", "БЕГИ!", true};
+Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage ("Сталкер.bmp"), txLoadImage ("ГЛАЗ.bmp")};
+Stalker zast = {470, 160, 225, 225, txLoadImage("Заставка1.bmp"), txLoadImage("Заставка1.bmp"), txLoadImage("ГЛАЗ1.bmp")};
+Bullet bul0 = {760, 143, 80, 20, 25, txLoadImage ("SHELL.bmp")};
+Bullet bul1 = {760, 183, 80, 20, 25, txLoadImage ("SHELL.bmp")};
+Bullet bul2 = {760, 223, 80, 20, 25, txLoadImage ("SHELL.bmp")};
+Bullet bul3 = {760, 263, 80, 20, 25, txLoadImage ("SHELL.bmp")};
+Bullet bul4 = {760, 303, 80, 20, 25, txLoadImage ("SHELL.bmp")};
+Bullet bul5 = {760, 343, 80, 20, 25, txLoadImage ("SHELL.bmp")};
 
-
+btn0.text = btn0.text_normal;
+btn1.text = btn1.text_normal;
+btn2.text = btn2.text_normal;
+btn3.text = btn3.text_normal;
+btn4.text = btn4.text_normal;
+stalker.image = stalker.image_normal;
 
     while(!(btn4.click()))
     {
@@ -134,24 +146,25 @@ Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage (
 
     if(PAGE == "menu")
     {
-        for(int i=0; i<=4; i++)
-        {
-            txSetColor(TX_RED);
-            txSetFillColor(TX_GREEN);
-            txRectangle(800,600,0,0);
-            btn0.draw();
-            btn1.draw();
-            btn2.draw();
-            btn3.draw();
-            btn4.draw();
-            btn0.visible = true;
-            btn1.visible = true;
-            btn2.visible = true;
-            btn3.visible = true;
-            btn4.visible = true;
 
-        }
-        if(btn0.click())
+        txSetColor(TX_RED);
+        txSetFillColor(TX_GREEN);
+        txRectangle(0,0,800,600);
+        zast.draw();
+        txSetFillColor(TX_GRAY);
+        btn0.draw();
+        btn1.draw();
+        btn2.draw();
+        btn3.draw();
+        btn4.draw();
+        btn0.visible = true;
+        btn1.visible = true;
+        btn2.visible = true;
+        btn3.visible = true;
+        btn4.visible = true;
+
+
+        if(btn0.click() )
         {
         PAGE="game";
         btn0.visible = false;
@@ -161,7 +174,7 @@ Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage (
         btn4.visible = false;
 
         }
-        if(btn1.click())
+        if(btn1.click() and SCARY < 666)
         {
         PAGE="rules";
         btn0.visible = false;
@@ -170,7 +183,7 @@ Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage (
         btn3.visible = false;
         btn4.visible = false;
         }
-        if(btn2.click())
+        if(btn2.click() and SCARY < 666)
         {
         PAGE="nastr";
         btn0.visible = false;
@@ -179,7 +192,7 @@ Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage (
         btn3.visible = false;
         btn4.visible = false;
         }
-        if(btn3.click())
+        if(btn3.click() and SCARY < 666)
         {
         PAGE="about";
         btn0.visible = false;
@@ -188,6 +201,35 @@ Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage (
         btn3.visible = false;
         btn4.visible = false;
         }
+
+        if(SCARY < 666)
+        {
+
+        txSetColor(TX_YELLOW);
+        txSetFillColor(TX_RED);
+        txDrawText (20, 0, 340, 80, "STALKER 3 (100% Original)");
+
+        }
+
+        if(SCARY == 666)
+        {
+        txSetColor(TX_RED);
+        txSetFillColor(TX_RED);
+        txDrawText (20, 0, 340, 80, "ОНО УЖЕ ЗДЕСЬ");
+
+        }
+
+        if(SCARY == 666)
+        {
+
+            btn4.text = btn4.text_scary;
+            btn1.text = btn1.text_scary;
+            btn2.text = btn2.text_scary;
+            btn3.text = btn3.text_scary;
+            btn0.text = btn0.text_scary;
+
+        }
+
 
 
     }
@@ -198,18 +240,34 @@ Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage (
      txSetColor(TX_RED);
      txSetFillColor(TX_YELLOW);
      txRectangle(800,600,0,0);
+     txDrawText (500, 0, 820, 80, "стрелка вверх - ........");
      txSelectFont ("Areal", 40);
      txDrawText (0, 0, 260, 80, "(еsc для выхода)  ");
      txDrawText (100, 100, 665, 190, "Правила игры:");
      txDrawText (100, 150, 665, 230, "1. Оскорбление = БАН");
      txDrawText (100, 200, 665, 270, "2. Читы = БАН");
      txDrawText (20, 250, 780, 310, "3. Оскорбление АДМИНИСТРАЦИИ = РАССТРЕЛ+БАН");
+     txDrawText (20, 300, 780, 350, "Управление :");
+     txDrawText (20, 350, 780, 390, "боковые стрелки - движение в стороны");
+     txDrawText (20, 400, 780, 430, "пробел - прыжок");
+     txDrawText (20, 450, 780, 470, "стрелка вниз - рывок вниз");
      if(GetAsyncKeyState(VK_ESCAPE))
      {
         PAGE = "menu";
      }
 
-    }
+     if(hard > 200)
+     {
+     txSetColor(TX_BLACK);
+     txSetFillColor(TX_BLACK);
+     txDrawText (500, 0, 820, 80, "стрелка вверх - ........");
+     }
+
+
+
+     }
+
+
 
     if(PAGE == "nastr")
     {
@@ -249,90 +307,291 @@ Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage (
 
     if(PAGE == "game")
     {
-    txSetColor(TX_BLACK);
-    txSetFillColor(TX_WHITE);
-    txRectangle(800,600,0,0);
-    txSetFillColor(TX_GREEN);
-    txRectangle(0,600,280,510);
-    txDrawText (0, 0, 260, 80, "(еsc для выхода)");
-    stalker.draw();
-    if(GetAsyncKeyState(VK_ESCAPE))
-     {
-    PAGE = "menu";
-     }
+// БАЗА :
+{
+        txSetColor(TX_BLACK);
+        txSetFillColor(TX_WHITE);
+        txRectangle(800,600,0,0);
+        random += 1;
+        hard += 1;
+        txSetFillColor(TX_GREEN);
+        txRectangle(0,600,280,510);
+        txDrawText (0, 0, 260, 80, "(еsc для выхода)");
+        stalker.draw();
 
-    if (GetAsyncKeyState(VK_RIGHT))
+
+        if(GetAsyncKeyState(VK_ESCAPE))
+         {
+            PAGE = "menu";
+         }
+
+        if(random > 250)
+         {
+            random = 0;
+         }
+
+        if(hard > 150)
+         {
+            bul0.s = 35;
+            bul1.s = 35;
+            bul2.s = 35;
+            bul3.s = 35;
+            bul4.s = 35;
+            bul5.s = 35;
+         }
+
+        if(hard > 350)
+         {
+            bul0.s = 60;
+            bul1.s = 60;
+            bul2.s = 60;
+            bul3.s = 60;
+            bul4.s = 60;
+            bul5.s = 60;
+         }
+
+        if(hard > 600)
+         {
+            bul0.s = 90;
+            bul1.s = 90;
+            bul2.s = 90;
+            bul3.s = 90;
+            bul4.s = 90;
+            bul5.s = 90;
+         }
+
+
+        if(GetAsyncKeyState(VK_UP))
+        {
+
+        stalker.image = stalker.image_scary;
+        zast.image = zast.image_scary;
+        SCARY = 666;
+
+        }
+
+}
+// генерация снарядов :
+{
+    if(random > 200)
     {
-     stalker.x += 20;
+     bul0.draw();
+     bul0.x -= bul0.s;
     }
 
-
-        if (stalker.x > 220)
+        if(random == 200)
         {
-         stalker.x -= 20;
+         bul0.x = 760;
+         bul0.y = 143;
+        }
+
+    if(random > 100)
+    {
+     bul1.draw();
+     bul1.x -= bul1.s;
+
+    }
+
+        if(random == 100)
+        {
+         bul1.x = 760;
+         bul1.y = 183;
+        }
+
+
+     if(random > 50)
+    {
+     bul2.draw();
+     bul2.x -= bul2.s;
+
+    }
+
+        if(random == 500)
+        {
+         bul2.x = 760;
+         bul2.y = 223;
+        }
+
+     if(random > 10)
+    {
+     bul3.draw();
+     bul3.x -= bul3.s;
+
+    }
+
+        if(random == 10)
+        {
+         bul3.x = 760;
+         bul3.y = 263;
+        }
+
+     if(random > 160)
+    {
+     bul4.draw();
+     bul4.x -= bul4.s;
+
+    }
+
+        if(random == 160)
+        {
+         bul4.x = 760;
+         bul4.y = 303;
+        }
+
+     if(random > 125)
+    {
+     bul5.draw();
+     bul5.x -= bul5.s;
+
+    }
+
+        if(random == 125)
+        {
+         bul5.x = 760;
+         bul5.y = 343;
+        }
+
+}
+// управлние Сталкером :
+{
+
+
+
+
+
+        if(hp < 0)
+        {
+        PAGE = "LOSE";
         }
 
 
 
+        if (GetAsyncKeyState(VK_SPACE))
+         {
+            stalker.y -= 55;
 
-    if (GetAsyncKeyState(VK_LEFT))
-    {
-     stalker.x -= 20;
-    }
+         }
 
+         stalker.y += 20;
 
-        if (stalker.x < 0)
-        {
-         stalker.x += 20;
+            if (stalker.y > 310)
+                {
+
+          stalker.y = 310;
+        }
+            if (stalker.y < 60)
+                {
+          stalker.y = 60;
         }
 
+        if (GetAsyncKeyState(VK_DOWN) and stalker.y < 180)
+         {
+            stalker.y += 70;
+         }
 
-     stalker.y += 12;
-     if (GetAsyncKeyState(VK_SPACE))
+        if (GetAsyncKeyState(VK_RIGHT))
+         {
+            stalker.x += 8;
+
+         }
+
+            if (stalker.x > 205)
+         {
+            stalker.x -=8;
+
+         }
+
+        if (GetAsyncKeyState(VK_LEFT))
+         {
+            stalker.x -= 8;
+
+         }
+
+            if (stalker.x < 0)
+                {
+            stalker.x += 8;
+
+         }
+}
+// касание снаряда (не работает) :
+{
+    if (stalker.x+stalker.y == bul0.x+bul0.y)
+
+    hp -= 3;
+    txDrawText (100, 100, 665, 190, "-3");
+
+
+
+    if (stalker.x+stalker.y == bul1.x+bul1.y)
     {
-     stalker.y -= 35;
+    hp -= 3;
+    txDrawText (100, 100, 665, 190, "-3");
     }
 
-         if (stalker.y > 310)
-        {
-         stalker.y = 310;
-        }
-
-
-         if (stalker.y < 53)
-        {
-         stalker.y = 53;
-        }
-
-
-     if (GetAsyncKeyState(VK_DOWN) and stalker.y < 260)
+    if (stalker.x+stalker.y == bul2.x+bul2.y)
     {
-     stalker.y += 45;
+    hp -= 3;
+    txDrawText (100, 100, 665, 190, "-3");
     }
 
-    if (GetAsyncKeyState('q') and GetAsyncKeyState('e'))
+    if (stalker.x+stalker.y == bul3.x+bul3.y)
     {
-     SCARY = 666;
+    hp -= 3;
+    txDrawText (100, 100, 665, 190, "-3");
     }
 
-    if (SCARY == 666)
+    if (stalker.x+stalker.y == bul4.x+bul4.y)
     {
-     stalker.image = stalker.image_scary;
+    hp -= 3;
+    txDrawText (100, 100, 665, 190, "-3");
     }
 
+    if (stalker.x+stalker.y == bul5.x+bul5.y)
+    {
+    hp -= 3;
+    txDrawText (100, 100, 665, 190, "-3");
+    }
 
+}
 
     }
 
-
-
+    if(PAGE == "LOSE")
+    {
+     txSetColor(TX_RED);
+     txSetFillColor(TX_CYAN);
+     txRectangle(800,600,0,0);
+     txSelectFont ("Areal", 40);
+     txSetColor(TX_GREEN);
+     txSetFillColor(TX_RED);
+     txDrawText (100, 100, 665, 190, "CUDA!!!!!");
+    }
 
     txEnd();
     txSleep(50);
 
-    }
+  }
 
 
-    txDisableAutoPause();
-    return 0;
-    }
+
+// Блок освобождения HDC :
+{
+txDeleteDC(stalker.image_normal);
+txDeleteDC(stalker.image_scary);
+txDeleteDC(zast.image_normal);
+txDeleteDC(zast.image_scary);
+txDeleteDC(bul5.image);
+txDeleteDC(bul5.image);
+txDeleteDC(bul4.image);
+txDeleteDC(bul3.image);
+txDeleteDC(bul2.image);
+txDeleteDC(bul1.image);
+txDeleteDC(bul0.image);
+txDeleteDC(stalker.image);
+txDeleteDC(zast.image);
+}
+
+
+txDisableAutoPause();
+return 0;
+}
