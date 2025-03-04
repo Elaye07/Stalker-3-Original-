@@ -107,6 +107,7 @@ int main()
     txCreateWindow (800, 600);
     txTextCursor (false);
 
+int GOD = 0;
 string PAGE = "menu";
 int random = 0;
 int hp = 100;
@@ -115,12 +116,13 @@ int SCARY = 0;
 
 
 Button btn0 = {125, 100, 200, 45, "Start", "Start", "_____", true};
-Button btn1 = {125, 165, 200, 45, "Rules", "Rules", "СМЕРТЬ", true};
+Button btn1 = {125, 165, 200, 45, "Rules", "Rules", "ОНО", true};
 Button btn2 = {125, 230, 200, 45, "Settings", "Settings", "УЖЕ", true};
-Button btn3 = {125, 295, 200, 45, "About program", "About program", "БЛИЗКА", true};
+Button btn3 = {125, 295, 200, 45, "About program", "About program", "БЛИЗКО", true};
 Button btn4 = {125, 370, 200, 45, "Exit", "Exit", "БЕГИ!", true};
 Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage ("Сталкер.bmp"), txLoadImage ("ГЛАЗ.bmp")};
 Stalker zast = {470, 160, 225, 225, txLoadImage("Заставка1.bmp"), txLoadImage("Заставка1.bmp"), txLoadImage("ГЛАЗ1.bmp")};
+Stalker god = {420, 210, 400, 373 , txLoadImage("У.bmp"), txLoadImage("У.bmp"), txLoadImage("У.bmp")};
 Bullet bul0 = {760, 143, 80, 20, 25, txLoadImage ("SHELL.bmp")};
 Bullet bul1 = {760, 183, 80, 20, 25, txLoadImage ("SHELL.bmp")};
 Bullet bul2 = {760, 223, 80, 20, 25, txLoadImage ("SHELL.bmp")};
@@ -320,7 +322,7 @@ stalker.image = stalker.image_normal;
         stalker.draw();
 
 
-        if(GetAsyncKeyState(VK_ESCAPE))
+        if(GetAsyncKeyState(VK_ESCAPE) and GOD < 1)
          {
             PAGE = "menu";
          }
@@ -360,6 +362,15 @@ stalker.image = stalker.image_normal;
             bul5.s = 90;
          }
 
+        if(SCARY == 666 and hard > 600)
+         {
+        GOD = 2;
+        txSetColor(TX_RED);
+        txSetFillColor(TX_RED);
+        txSelectFont ("Areal", 40);
+        txDrawText (226, 110, 555, 150, "GOD IS HERE");
+        god.draw();
+         }
 
         if(GetAsyncKeyState(VK_UP))
         {
@@ -370,82 +381,88 @@ stalker.image = stalker.image_normal;
 
         }
 
+
+
+
+
+
+
 }
 // генерация снарядов :
 {
-    if(random > 200)
+    if(random > 200 and GOD < 1)
     {
      bul0.draw();
      bul0.x -= bul0.s;
     }
 
-        if(random == 200)
+        if(random == 200 and GOD < 1)
         {
          bul0.x = 760;
          bul0.y = 143;
         }
 
-    if(random > 100)
+    if(random > 100 and GOD < 1)
     {
      bul1.draw();
      bul1.x -= bul1.s;
 
     }
 
-        if(random == 100)
+        if(random == 100 and GOD < 1)
         {
          bul1.x = 760;
          bul1.y = 183;
         }
 
 
-     if(random > 50)
+     if(random > 50 and GOD < 1)
     {
      bul2.draw();
      bul2.x -= bul2.s;
 
     }
 
-        if(random == 500)
+        if(random == 500 and GOD < 1)
         {
          bul2.x = 760;
          bul2.y = 223;
         }
 
-     if(random > 10)
+     if(random > 10 and GOD < 1)
     {
      bul3.draw();
      bul3.x -= bul3.s;
 
     }
 
-        if(random == 10)
+        if(random == 10 and GOD < 1)
         {
          bul3.x = 760;
          bul3.y = 263;
         }
 
-     if(random > 160)
+     if(random > 160 and GOD < 1)
     {
      bul4.draw();
      bul4.x -= bul4.s;
 
     }
 
-        if(random == 160)
+        if(random == 160 and GOD < 1)
         {
          bul4.x = 760;
          bul4.y = 303;
         }
 
-     if(random > 125)
+     if(random > 125 and GOD < 1)
     {
      bul5.draw();
      bul5.x -= bul5.s;
 
     }
 
-        if(random == 125)
+        if(random == 125 and GOD < 1)
         {
          bul5.x = 760;
          bul5.y = 343;
@@ -516,40 +533,30 @@ stalker.image = stalker.image_normal;
 // касание снаряда (не работает) :
 {
     if (stalker.x+stalker.y == bul0.x+bul0.y)
-
-    hp -= 3;
-    txDrawText (100, 100, 665, 190, "-3");
+    {
+    }
 
 
 
     if (stalker.x+stalker.y == bul1.x+bul1.y)
     {
-    hp -= 3;
-    txDrawText (100, 100, 665, 190, "-3");
     }
 
     if (stalker.x+stalker.y == bul2.x+bul2.y)
     {
-    hp -= 3;
-    txDrawText (100, 100, 665, 190, "-3");
+
     }
 
     if (stalker.x+stalker.y == bul3.x+bul3.y)
     {
-    hp -= 3;
-    txDrawText (100, 100, 665, 190, "-3");
     }
 
     if (stalker.x+stalker.y == bul4.x+bul4.y)
     {
-    hp -= 3;
-    txDrawText (100, 100, 665, 190, "-3");
     }
 
     if (stalker.x+stalker.y == bul5.x+bul5.y)
     {
-    hp -= 3;
-    txDrawText (100, 100, 665, 190, "-3");
     }
 
 }
@@ -564,7 +571,7 @@ stalker.image = stalker.image_normal;
      txSelectFont ("Areal", 40);
      txSetColor(TX_GREEN);
      txSetFillColor(TX_RED);
-     txDrawText (100, 100, 665, 190, "CUDA!!!!!");
+     txDrawText (100, 100, 665, 190, "__");
     }
 
     txEnd();
