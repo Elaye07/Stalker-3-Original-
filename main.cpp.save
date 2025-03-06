@@ -114,15 +114,16 @@ int hp = 100;
 int hard = 0;
 int SCARY = 0;
 
-
 Button btn0 = {125, 100, 200, 45, "Start", "Start", "_____", true};
 Button btn1 = {125, 165, 200, 45, "Rules", "Rules", "ŒÕŒ", true};
 Button btn2 = {125, 230, 200, 45, "Settings", "Settings", "”∆≈", true};
 Button btn3 = {125, 295, 200, 45, "About program", "About program", "¡À»« Œ", true};
 Button btn4 = {125, 370, 200, 45, "Exit", "Exit", "¡≈√»!", true};
+Button btn5 = {700, 25, 100, 26, "THE GOD", "THE GOD", "THE GOD", true};
+Button btn6 = {700, 65, 100, 26, "Ã¿√¿«»Õ", "Ã¿√¿«»Õ", "????", true};
 Stalker stalker = {90, 310, 120, 200, txLoadImage ("—Ú‡ÎÍÂ.bmp"), txLoadImage ("—Ú‡ÎÍÂ.bmp"), txLoadImage ("√À¿«.bmp")};
 Stalker zast = {470, 160, 225, 225, txLoadImage("«‡ÒÚ‡‚Í‡1.bmp"), txLoadImage("«‡ÒÚ‡‚Í‡1.bmp"), txLoadImage("√À¿«1.bmp")};
-Stalker god = {585, 255, };
+Stalker god = {420, 210, 400, 373 , txLoadImage("”.bmp"), txLoadImage("”.bmp"), txLoadImage("”.bmp")};
 Bullet bul0 = {760, 143, 80, 20, 25, txLoadImage ("SHELL.bmp")};
 Bullet bul1 = {760, 183, 80, 20, 25, txLoadImage ("SHELL.bmp")};
 Bullet bul2 = {760, 223, 80, 20, 25, txLoadImage ("SHELL.bmp")};
@@ -135,9 +136,10 @@ btn1.text = btn1.text_normal;
 btn2.text = btn2.text_normal;
 btn3.text = btn3.text_normal;
 btn4.text = btn4.text_normal;
+btn6.text = btn6.text_normal;
 stalker.image = stalker.image_normal;
 
-    while(!(btn4.click()))
+    while(!btn4.click())
     {
 
     txSetFillColor (TX_BLACK);
@@ -159,14 +161,18 @@ stalker.image = stalker.image_normal;
         btn2.draw();
         btn3.draw();
         btn4.draw();
+        btn5.draw();
+        btn6.draw();
+        btn6.visible = true;
         btn0.visible = true;
         btn1.visible = true;
         btn2.visible = true;
         btn3.visible = true;
         btn4.visible = true;
+        btn5.visible = true;
 
 
-        if(btn0.click() )
+        if(btn0.click())
         {
         PAGE="game";
         btn0.visible = false;
@@ -174,7 +180,7 @@ stalker.image = stalker.image_normal;
         btn2.visible = false;
         btn3.visible = false;
         btn4.visible = false;
-
+        btn5.visible = false;
         }
         if(btn1.click() and SCARY < 666)
         {
@@ -184,6 +190,7 @@ stalker.image = stalker.image_normal;
         btn2.visible = false;
         btn3.visible = false;
         btn4.visible = false;
+        btn5.visible = false;
         }
         if(btn2.click() and SCARY < 666)
         {
@@ -193,6 +200,7 @@ stalker.image = stalker.image_normal;
         btn2.visible = false;
         btn3.visible = false;
         btn4.visible = false;
+        btn5.visible = false;
         }
         if(btn3.click() and SCARY < 666)
         {
@@ -202,7 +210,33 @@ stalker.image = stalker.image_normal;
         btn2.visible = false;
         btn3.visible = false;
         btn4.visible = false;
+        btn5.visible = false;
         }
+        if(btn5.click() and SCARY == 666)
+        {
+        PAGE="INFORMATION";
+        btn0.visible = false;
+        btn1.visible = false;
+        btn2.visible = false;
+        btn3.visible = false;
+        btn4.visible = false;
+        btn5.visible = false;
+        }
+        if(btn6.click() and SCARY < 666)
+        {
+        PAGE = "SHOP";
+        btn0.visible = false;
+        btn1.visible = false;
+        btn2.visible = false;
+        btn3.visible = false;
+        btn4.visible = false;
+        btn5.visible = false;
+        }
+
+
+
+
+
 
         if(SCARY < 666)
         {
@@ -229,6 +263,7 @@ stalker.image = stalker.image_normal;
             btn2.text = btn2.text_scary;
             btn3.text = btn3.text_scary;
             btn0.text = btn0.text_scary;
+            btn6.text = btn6.text_scary;
 
         }
 
@@ -269,7 +304,24 @@ stalker.image = stalker.image_normal;
 
      }
 
+    if(PAGE == "INFORMATION")
+     {
+        txSetColor(TX_RED);
+        txSetFillColor(TX_WHITE);
+        txRectangle(800,600,0,0);
+        txSelectFont ("Areal", 40);
+        txSetFillColor(TX_BLACK);
+        txDrawText (10, 0, 260, 80, "THE GOD - ¡Œ√");
+        txDrawText (5, 100, 665, 190, "»—“Œ–»ﬂ œŒﬂ¬À≈Õ»ﬂ :");
+        txDrawText (5, 150, 665, 230, "__+_=--=12+-443*////++˝][;p[;.?");
+        txDrawText (5, 200, 665, 270, "—À¿¡Œ—“» :");
+        txDrawText (5, 250, 665, 310, "))9*72π=--=12*398++**/+212+=2___-¡,");
+        if(GetAsyncKeyState(VK_ESCAPE))
+     {
+        PAGE = "menu";
+     }
 
+     }
 
     if(PAGE == "nastr")
     {
@@ -322,6 +374,7 @@ stalker.image = stalker.image_normal;
         stalker.draw();
 
 
+
         if(GetAsyncKeyState(VK_ESCAPE) and GOD < 1)
          {
             PAGE = "menu";
@@ -369,6 +422,7 @@ stalker.image = stalker.image_normal;
         txSetFillColor(TX_RED);
         txSelectFont ("Areal", 40);
         txDrawText (226, 110, 555, 150, "GOD IS HERE");
+        god.draw();
          }
 
         if(GetAsyncKeyState(VK_UP))
@@ -571,6 +625,23 @@ stalker.image = stalker.image_normal;
      txSetColor(TX_GREEN);
      txSetFillColor(TX_RED);
      txDrawText (100, 100, 665, 190, "__");
+    }
+
+    if(PAGE == "SHOP")
+    {
+        txSetColor(TX_RED);
+        txSetFillColor(TX_YELLOW);
+        txRectangle(800,600,0,0);
+        txSetFillColor(TX_BLACK);
+        txDrawText (10, 0, 260, 80, "Ã¿√¿«»Õ");
+        txDrawText (20, 100, 665, 190, "œÓÍ‡ ˜ÚÓ ÚÛÚ ÔÛÒÚÓ...");
+        if(GetAsyncKeyState(VK_ESCAPE))
+     {
+        PAGE = "menu";
+     }
+
+
+
     }
 
     txEnd();
