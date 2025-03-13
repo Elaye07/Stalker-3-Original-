@@ -24,6 +24,21 @@
 
 #include "TXLib.h"
 
+void DrawText(int y)
+{
+     txSetColor(TX_BLACK);
+     txSetFillColor(TX_BLACK);
+     txRectangle(800,600,0,0);
+     txSetColor(TX_WHITE);
+     txSetFillColor(TX_WHITE);
+     txSelectFont ("Areal", 40);
+     txDrawText (100, 100, 665, 190, " ŒÕ÷Œ¬ ¿ œ≈–¬¿ﬂ");
+     txDrawText (100, 200, 665, 290, "THE GOD ");
+
+
+
+}
+
 struct Bullet
 {
     int x;
@@ -113,6 +128,8 @@ int random = 0;
 int hp = 100;
 int hard = 0;
 int SCARY = 0;
+int yText = 500;
+
 
 Button btn0 = {125, 100, 200, 45, "Start", "Start", "_____", true};
 Button btn1 = {125, 165, 200, 45, "Rules", "Rules", "ŒÕŒ", true};
@@ -123,7 +140,7 @@ Button btn5 = {700, 25, 100, 26, "THE GOD", "THE GOD", "THE GOD", true};
 Button btn6 = {700, 65, 100, 26, "Ã¿√¿«»Õ", "Ã¿√¿«»Õ", "????", true};
 Stalker stalker = {90, 310, 120, 200, txLoadImage ("—Ú‡ÎÍÂ.bmp"), txLoadImage ("—Ú‡ÎÍÂ.bmp"), txLoadImage ("√À¿«.bmp")};
 Stalker zast = {470, 160, 225, 225, txLoadImage("«‡ÒÚ‡‚Í‡1.bmp"), txLoadImage("«‡ÒÚ‡‚Í‡1.bmp"), txLoadImage("√À¿«1.bmp")};
-Stalker god = {420, 210, 400, 373 , txLoadImage("”.bmp"), txLoadImage("”.bmp"), txLoadImage("”.bmp")};
+Stalker god = {420, -50, 400, 373 , txLoadImage("”.bmp"), txLoadImage("”.bmp"), txLoadImage("”.bmp")};
 Bullet bul0 = {760, 143, 80, 20, 25, txLoadImage ("SHELL.bmp")};
 Bullet bul1 = {760, 183, 80, 20, 25, txLoadImage ("SHELL.bmp")};
 Bullet bul2 = {760, 223, 80, 20, 25, txLoadImage ("SHELL.bmp")};
@@ -434,10 +451,21 @@ stalker.image = stalker.image_normal;
 
         }
 
+// <JCQ#+
+{
+    if (GOD > 1 and god.y < 199)
+    {
+        god.y += 10;
+    }
+
+    if (god.y > 198)
+    {
+        PAGE = "ENDING #1";
+    }
 
 
 
-
+}
 
 
 }
@@ -587,10 +615,8 @@ stalker.image = stalker.image_normal;
 {
     if (stalker.x+stalker.y == bul0.x+bul0.y)
     {
+
     }
-
-
-
     if (stalker.x+stalker.y == bul1.x+bul1.y)
     {
     }
@@ -640,6 +666,17 @@ stalker.image = stalker.image_normal;
         PAGE = "menu";
      }
 
+
+
+    }
+
+    if(PAGE == "ENDING #1")
+    {
+     if (yText < 600)
+     {
+     DrawText(yText + 50);
+     yText -= 5;
+     }
 
 
     }
