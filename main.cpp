@@ -47,6 +47,9 @@ struct Bullet
     int h;
     int s;
     HDC image;
+    HDC image_normal;
+    HDC image_angel;
+
 
 
     void draw()
@@ -140,14 +143,23 @@ Button btn5 = {700, 25, 100, 26, "THE GOD", "THE GOD", "THE GOD", true};
 Button btn6 = {700, 65, 100, 26, "МАГАЗИН", "МАГАЗИН", "????", true};
 Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage ("Сталкер.bmp"), txLoadImage ("ГЛАЗ.bmp")};
 Stalker zast = {470, 160, 225, 225, txLoadImage("Заставка1.bmp"), txLoadImage("Заставка1.bmp"), txLoadImage("ГЛАЗ1.bmp")};
+Stalker fon = {0, 0, 800, 600, txLoadImage("FON.bmp"), txLoadImage("FON.bmp"), txLoadImage("FON2.bmp")};
 Stalker god = {420, -50, 400, 373 , txLoadImage("У.bmp"), txLoadImage("У.bmp"), txLoadImage("У.bmp")};
-Bullet bul0 = {760, 143, 80, 20, 25, txLoadImage ("SHELL.bmp")};
-Bullet bul1 = {760, 183, 80, 20, 25, txLoadImage ("SHELL.bmp")};
-Bullet bul2 = {760, 223, 80, 20, 25, txLoadImage ("SHELL.bmp")};
-Bullet bul3 = {760, 263, 80, 20, 25, txLoadImage ("SHELL.bmp")};
-Bullet bul4 = {760, 303, 80, 20, 25, txLoadImage ("SHELL.bmp")};
-Bullet bul5 = {760, 343, 80, 20, 25, txLoadImage ("SHELL.bmp")};
+Bullet bul0 = {760, 143, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
+Bullet bul1 = {760, 183, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
+Bullet bul2 = {760, 223, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
+Bullet bul3 = {760, 263, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
+Bullet bul4 = {760, 303, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
+Bullet bul5 = {760, 343, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
 
+
+
+bul0.image = bul0.image_normal;
+bul1.image = bul1.image_normal;
+bul2.image = bul2.image_normal;
+bul3.image = bul3.image_normal;
+bul4.image = bul4.image_normal;
+bul5.image = bul5.image_normal;
 btn0.text = btn0.text_normal;
 btn1.text = btn1.text_normal;
 btn2.text = btn2.text_normal;
@@ -155,6 +167,7 @@ btn3.text = btn3.text_normal;
 btn4.text = btn4.text_normal;
 btn6.text = btn6.text_normal;
 stalker.image = stalker.image_normal;
+fon.image = fon.image_normal;
 
     while(!btn4.click())
     {
@@ -282,6 +295,7 @@ stalker.image = stalker.image_normal;
             btn0.text = btn0.text_scary;
             btn6.text = btn6.text_scary;
 
+
         }
 
 
@@ -384,11 +398,17 @@ stalker.image = stalker.image_normal;
         txSetFillColor(TX_WHITE);
         txRectangle(800,600,0,0);
         random += 1;
-        hard += 1;
-        txSetFillColor(TX_GREEN);
+        hard += 10;
+        fon.draw();
+        txSetFillColor(TX_GRAY);
         txRectangle(0,600,280,510);
         txDrawText (0, 0, 260, 80, "(еsc для выхода)");
         stalker.draw();
+
+        if(hard > 1000 and GOD < 1)
+        {
+            hard = 1000;
+        }
 
 
 
@@ -432,6 +452,25 @@ stalker.image = stalker.image_normal;
             bul5.s = 90;
          }
 
+        if(hard == 6666)
+        {
+            bul0.s = 120;
+            bul1.s = 120;
+            bul2.s = 120;
+            bul3.s = 120;
+            bul4.s = 120;
+            bul5.s = 120;
+        }
+
+
+        if(SCARY == 666)
+        {
+        fon.image = fon.image_scary;
+        }
+
+
+
+
         if(SCARY == 666 and hard > 600)
          {
         GOD = 2;
@@ -460,10 +499,21 @@ stalker.image = stalker.image_normal;
 
     if (god.y > 198)
     {
-        PAGE = "ENDING #1";
+      //  PAGE = "ENDING #1";
     }
 
+    if (GOD > 1)
+    {
+        hard = 6666;
+        bul0.image = bul0.image_angel;
+        bul1.image = bul1.image_angel;
+        bul2.image = bul2.image_angel;
+        bul3.image = bul3.image_angel;
+        bul4.image = bul4.image_angel;
+        bul5.image = bul5.image_angel;
 
+
+    }
 
 }
 
@@ -477,77 +527,88 @@ stalker.image = stalker.image_normal;
      bul0.x -= bul0.s;
     }
 
-        if(random == 200 and GOD < 1)
+        if(random == 200)
         {
          bul0.x = 760;
          bul0.y = 143;
         }
 
-    if(random > 100 and GOD < 1)
+    if(random > 100)
     {
      bul1.draw();
      bul1.x -= bul1.s;
 
     }
 
-        if(random == 100 and GOD < 1)
+        if(random == 100)
         {
          bul1.x = 760;
          bul1.y = 183;
         }
 
 
-     if(random > 50 and GOD < 1)
+     if(random > 50)
     {
      bul2.draw();
      bul2.x -= bul2.s;
 
     }
 
-        if(random == 500 and GOD < 1)
+        if(random == 500)
         {
          bul2.x = 760;
          bul2.y = 223;
         }
 
-     if(random > 10 and GOD < 1)
+     if(random > 10)
     {
      bul3.draw();
      bul3.x -= bul3.s;
 
     }
 
-        if(random == 10 and GOD < 1)
+        if(random == 10)
         {
          bul3.x = 760;
          bul3.y = 263;
         }
 
-     if(random > 160 and GOD < 1)
+     if(random > 160)
     {
      bul4.draw();
      bul4.x -= bul4.s;
 
     }
 
-        if(random == 160 and GOD < 1)
+        if(random == 160)
         {
          bul4.x = 760;
          bul4.y = 303;
         }
 
-     if(random > 125 and GOD < 1)
+     if(random > 125)
     {
      bul5.draw();
      bul5.x -= bul5.s;
 
     }
 
-        if(random == 125 and GOD < 1)
+        if(random == 125)
         {
          bul5.x = 760;
          bul5.y = 343;
         }
+
+    if(GOD > 1)
+    {
+        hard = 6666;
+
+
+    }
+
+
+
+
 
 }
 // управлние Сталкером :
