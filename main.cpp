@@ -178,7 +178,7 @@ char stu[20];
     while(!btn4.click())
     {
 
-    txSetFillColor (TX_BLACK);
+    txSetFillColor(TX_BLACK);
     txClear();
     txBegin();
 
@@ -405,7 +405,7 @@ char stu[20];
         txRectangle(800,600,0,0);
         random += 1;
         hard += 10;
-        Score += 5;
+        Score += 3;
         fon.draw();
         txSetFillColor(TX_GRAY);
         txRectangle(0,600,280,510);
@@ -424,9 +424,9 @@ char stu[20];
 
         }
 
-        if(Score > 1499 && SCARY < 666)
+        if(Score > 1999 && SCARY < 666)
         {
-            Score = 1500;
+            Score = 2000;
             PAGE = "ENDING #2";
         }
 
@@ -435,10 +435,18 @@ char stu[20];
             PAGE = "menu";
          }
 
-        if(random > 250)
+        if(random > 179 and GOD < 1)
          {
             random = 0;
          }
+
+
+        if(random > 39 and GOD > 1)
+         {
+            random = 0;
+         }
+
+
 
         if(hard > 150)
          {
@@ -541,97 +549,123 @@ char stu[20];
 }
 // генерация снарядов :
 {
-    if(random > 200 and GOD < 1)
+    if(GOD < 1)
+{
+
+    if(random > 1 and random < 30)
     {
+
      bul0.draw();
      bul0.x -= bul0.s;
     }
 
-        if(random == 200)
+        if(random == 1)
         {
-         bul0.x = 760;
-         bul0.y = 143;
+             bul0.x = 760;
+             bul0.y = 135;
+
         }
 
-    if(random > 100)
+
+    if(random > 30 and random < 60)
     {
-     bul1.draw();
-     bul1.x -= bul1.s;
+     bul0.draw();
+     bul0.x -= bul1.s;
+
+    }
+        if(random == 30)
+        {
+             bul0.x = 760;
+             bul0.y = 350;
+
+        }
+
+
+     if(random > 60 and random < 90)
+    {
+     bul0.draw();
+     bul0.x -= bul0.s;
 
     }
 
-        if(random == 100)
+        if(random == 60)
         {
-         bul1.x = 760;
-         bul1.y = 183;
+            bul0.x = 760;
+            bul0.y = 160;
         }
 
-
-     if(random > 50)
+     if(random > 90 and random < 120)
     {
-     bul2.draw();
-     bul2.x -= bul2.s;
+
+     bul0.draw();
+     bul0.x -= bul0.s;
 
     }
 
-        if(random == 50)
+
+        if(random == 90)
         {
-         bul2.x = 760;
-         bul2.y = 223;
+            bul0.x = 760;
+            bul0.y = 300;
         }
 
-     if(random > 10)
-    {
-     bul3.draw();
-     bul3.x -= bul3.s;
 
+     if(random > 120 and random < 150)
+    {
+
+     bul0.draw();
+     bul0.x -= bul0.s;
+
+    }
+
+        if(random == 120)
+        {
+            bul0.x = 760;
+            bul0.y = 250;
+        }
+
+
+
+
+     if(random > 150 and random < 180)
+    {
+
+     bul0.draw();
+     bul0.x -= bul0.s;
+
+    }
+
+        if(random == 150)
+        {
+            bul0.x = 760;
+            bul0.y = 200;
+        }
+}
+
+
+    if(GOD > 1)
+{
+hard = 6666;
+
+
+    if(random > 10)
+    {
+
+     bul0.draw();
+     bul0.x -= bul0.s;
     }
 
         if(random == 10)
         {
-         bul3.x = 760;
-         bul3.y = 263;
+             bul0.x = 760;
+             bul0.y = stalker.y;
+
         }
-
-     if(random > 160)
-    {
-     bul4.draw();
-     bul4.x -= bul4.s;
-
-    }
-
-        if(random == 160)
-        {
-         bul4.x = 760;
-         bul4.y = 303;
-        }
-
-     if(random > 125)
-    {
-     bul5.draw();
-     bul5.x -= bul5.s;
-
-    }
-
-        if(random == 125)
-        {
-         bul5.x = 760;
-         bul5.y = 343;
-        }
-
-    if(GOD > 1)
-    {
-        hard = 6666;
-
-
-    }
-
-
-
-
-
 
 }
+
+
+
 // управлние Сталкером :
 {
 
@@ -697,7 +731,7 @@ char stu[20];
 {
     if (bul0.x<stalker.x+stalker.w && bul0.x+bul0.w>stalker.x && bul0.y>stalker.y && bul0.y+bul0.h<stalker.y+stalker.h)
     {
-          hp -= 6;
+          hp -= 8;
     }
 
     if (bul1.x<stalker.x+stalker.w && bul1.x+bul0.w>stalker.x && bul1.y>stalker.y && bul1.y+bul1.h<stalker.y+stalker.h)
@@ -726,6 +760,20 @@ char stu[20];
 
 
 }
+
+    }
+
+     txSetColor(TX_RED);
+     txSetFillColor(TX_WHITE);
+     txRectangle(800,600,0,0);
+     txSelectFont ("Areal", 40);
+     txSetColor(TX_BLACK);
+     txSetFillColor(TX_BLACK);
+     txDrawText (100, 100, 665, 190, "Победа!");
+     txDrawText (100, 170, 665, 260, "Игра пройдена!!!");
+     txDrawText (100, 400, 665, 490, "Или нет?.....");
+
+
 
     }
 
@@ -772,23 +820,7 @@ char stu[20];
 
     if(PAGE == "ENDING #2")
     {
-     txSetColor(TX_RED);
-     txSetFillColor(TX_WHITE);
-     txRectangle(800,600,0,0);
-     txSelectFont ("Areal", 40);
-     txSetColor(TX_BLACK);
-     txSetFillColor(TX_BLACK);
-     txDrawText (100, 100, 665, 190, "Победа!");
-     txDrawText (100, 170, 665, 260, "Игра пройдена!!!");
-     txDrawText (100, 400, 665, 490, "Или нет?.....");
 
-
-
-    }
-
-
-    txEnd();
-    txSleep(50);
 
   }
 
@@ -814,4 +846,5 @@ txDeleteDC(zast.image);
 
 txDisableAutoPause();
 return 0;
+    }
 }

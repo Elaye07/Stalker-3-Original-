@@ -6826,3 +6826,267 @@ Run file:	C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\bin\Debug\Игра №1.exe
 Directory:	C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\bin\Debug\Игра №1.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x81C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\main.cpp:817:
+
+    815: txDeleteDC(zast.image_scary);
+    816: txDeleteDC(bul5.image);
+=>  817: txDeleteDC(bul5.image);
+    818: txDeleteDC(bul4.image);
+    819: txDeleteDC(bul3.image);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2025 09:42:43, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 25 2025 09:43:20
+
+Run file:	C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\bin\Debug\Игра №1.exe
+Directory:	C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\bin\Debug\Игра №1.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x168C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\main.cpp:817:
+
+    815: txDeleteDC(zast.image_scary);
+    816: txDeleteDC(bul5.image);
+=>  817: txDeleteDC(bul5.image);
+    818: txDeleteDC(bul4.image);
+    819: txDeleteDC(bul3.image);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2025 09:48:10, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 25 2025 09:48:48
+
+Run file:	C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\bin\Debug\Игра №1.exe
+Directory:	C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\bin\Debug\Игра №1.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x25D0 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\main.cpp:836:
+
+    834: txDeleteDC(zast.image_scary);
+    835: txDeleteDC(bul5.image);
+=>  836: txDeleteDC(bul5.image);
+    837: txDeleteDC(bul4.image);
+    838: txDeleteDC(bul3.image);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2025 10:13:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 25 2025 10:14:35
+
+Run file:	C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\bin\Debug\Игра №1.exe
+Directory:	C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\bin\Debug\Игра №1.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x1980 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\main.cpp:836:
+
+    834: txDeleteDC(zast.image_scary);
+    835: txDeleteDC(bul5.image);
+=>  836: txDeleteDC(bul5.image);
+    837: txDeleteDC(bul4.image);
+    838: txDeleteDC(bul3.image);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2025 10:15:45, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Mar 25 2025 10:16:24
+
+Run file:	C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1\bin\Debug\Игра №1.exe
+Directory:	C:\Елаев Александр\Игра №1 (Сталкер)\Игра №1
+
+--------------------------------------------------
