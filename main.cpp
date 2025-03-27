@@ -133,6 +133,7 @@ int hard = 0;
 int SCARY = 0;
 int yText = 500;
 int Score = 0;
+int dam = 8;
 
 
 Button btn0 = {125, 100, 200, 45, "Start", "Start", "_____", true};
@@ -142,10 +143,12 @@ Button btn3 = {125, 295, 200, 45, "About program", "About program", "БЛИЗКО", tr
 Button btn4 = {125, 370, 200, 45, "Exit", "Exit", "БЕГИ!", true};
 Button btn5 = {700, 25, 100, 26, "THE GOD", "THE GOD", "THE GOD", true};
 Button btn6 = {700, 65, 100, 26, "МАГАЗИН", "МАГАЗИН", "????", true};
-Stalker stalker = {90, 310, 120, 200, txLoadImage ("Сталкер.bmp"), txLoadImage ("Сталкер.bmp"), txLoadImage ("ГЛАЗ.bmp")};
-Stalker zast = {470, 160, 225, 225, txLoadImage("Заставка1.bmp"), txLoadImage("Заставка1.bmp"), txLoadImage("ГЛАЗ1.bmp")};
-Stalker fon = {0, 0, 800, 600, txLoadImage("FON.bmp"), txLoadImage("FON.bmp"), txLoadImage("FON2.bmp")};
-Stalker god = {420, -50, 400, 373 , txLoadImage("У.bmp"), txLoadImage("У.bmp"), txLoadImage("У.bmp")};
+
+Stalker stalker = {90,  310, 120, 200, txLoadImage ("Сталкер.bmp"),  txLoadImage ("Сталкер.bmp"),  txLoadImage ("ГЛАЗ.bmp")};
+Stalker zast =    {470, 160, 225, 225, txLoadImage("Заставка1.bmp"), txLoadImage("Заставка1.bmp"), txLoadImage("ГЛАЗ1.bmp")};
+Stalker fon =     {0,     0, 800, 600, txLoadImage("ЛЕС.bmp"),       txLoadImage("ЛЕС.bmp"),       txLoadImage("ЛЕС0.bmp")};
+Stalker god =     {420, -50, 400, 373, txLoadImage("У.bmp"),         txLoadImage("У.bmp"),         txLoadImage("У.bmp")};
+
 Bullet bul0 = {760, 143, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
 Bullet bul1 = {760, 183, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
 Bullet bul2 = {760, 223, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
@@ -175,12 +178,12 @@ char stu[20];
 
 
 
-    while(!btn4.click())
-    {
+while(!btn4.click())
+{
 
-    txSetFillColor(TX_BLACK);
-    txClear();
-    txBegin();
+txSetFillColor(TX_BLACK);
+txClear();
+txBegin();
 
 
 
@@ -342,7 +345,7 @@ char stu[20];
      }
 
     if(PAGE == "INFORMATION")
-     {
+    {
         txSetColor(TX_RED);
         txSetFillColor(TX_WHITE);
         txRectangle(800,600,0,0);
@@ -402,7 +405,7 @@ char stu[20];
 {
         txSetColor(TX_BLACK);
         txSetFillColor(TX_WHITE);
-        txRectangle(800,600,0,0);
+        txRectangle(0,115,325,0);
         random += 1;
         hard += 10;
         Score += 3;
@@ -645,8 +648,8 @@ char stu[20];
 
     if(GOD > 1)
 {
-hard = 6666;
-
+bul0.s = 145;
+dam = 11;
 
     if(random > 10)
     {
@@ -658,14 +661,12 @@ hard = 6666;
         if(random == 10)
         {
              bul0.x = 760;
-             bul0.y = stalker.y;
+             bul0.y = stalker.y + 125;
 
         }
 
 }
-
-
-
+}
 // управлние Сталкером :
 {
 
@@ -727,11 +728,12 @@ hard = 6666;
 
          }
 }
+
 // касание снаряда (работает:)) :
 {
     if (bul0.x<stalker.x+stalker.w && bul0.x+bul0.w>stalker.x && bul0.y>stalker.y && bul0.y+bul0.h<stalker.y+stalker.h)
     {
-          hp -= 8;
+          hp -= dam;
     }
 
     if (bul1.x<stalker.x+stalker.w && bul1.x+bul0.w>stalker.x && bul1.y>stalker.y && bul1.y+bul1.h<stalker.y+stalker.h)
@@ -761,17 +763,9 @@ hard = 6666;
 
 }
 
-    }
 
-     txSetColor(TX_RED);
-     txSetFillColor(TX_WHITE);
-     txRectangle(800,600,0,0);
-     txSelectFont ("Areal", 40);
-     txSetColor(TX_BLACK);
-     txSetFillColor(TX_BLACK);
-     txDrawText (100, 100, 665, 190, "Победа!");
-     txDrawText (100, 170, 665, 260, "Игра пройдена!!!");
-     txDrawText (100, 400, 665, 490, "Или нет?.....");
+
+
 
 
 
@@ -809,30 +803,39 @@ hard = 6666;
 
     if(PAGE == "ENDING #1")
     {
-     if (yText < 600)
-     {
-     DrawText(yText + 50);
-     yText -= 5;
-     }
+         if (yText < 600)
+         {
+             DrawText(yText + 50);
+             yText -= 5;
+         }
 
 
     }
 
     if(PAGE == "ENDING #2")
     {
+     txSetColor(TX_RED);
+     txSetFillColor(TX_WHITE);
+     txRectangle(800,600,0,0);
+     txSelectFont ("Areal", 40);
+     txSetColor(TX_BLACK);
+     txSetFillColor(TX_BLACK);
+     txDrawText (100, 100, 665, 190, "Победа!");
+     txDrawText (100, 170, 665, 260, "Игра пройдена!!!");
+     txDrawText (100, 400, 665, 490, "Или нет?.....");
 
+    }
 
-  }
+    txEnd();
+    txSleep(50);
 
-
-
+}
 // Блок освобождения HDC :
 {
 txDeleteDC(stalker.image_normal);
 txDeleteDC(stalker.image_scary);
 txDeleteDC(zast.image_normal);
 txDeleteDC(zast.image_scary);
-txDeleteDC(bul5.image);
 txDeleteDC(bul5.image);
 txDeleteDC(bul4.image);
 txDeleteDC(bul3.image);
@@ -846,5 +849,4 @@ txDeleteDC(zast.image);
 
 txDisableAutoPause();
 return 0;
-    }
 }
