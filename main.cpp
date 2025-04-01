@@ -128,7 +128,7 @@ int main()
 int GOD = 0;
 string PAGE = "menu";
 int random = 0;
-int hp = 300;
+int hp = 800;
 int hard = 0;
 int SCARY = 0;
 int yText = 500;
@@ -149,13 +149,13 @@ Stalker zast =    {470, 160, 225, 225, txLoadImage("Заставка1.bmp"), txLoadImage
 Stalker fon =     {0,     0, 800, 600, txLoadImage("ЛЕС.bmp"),       txLoadImage("ЛЕС.bmp"),       txLoadImage("ЛЕС0.bmp")};
 Stalker god =     {420, -50, 400, 373, txLoadImage("У.bmp"),         txLoadImage("У.bmp"),         txLoadImage("У.bmp")};
 
-Bullet bul0 = {760, 143, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
+Bullet bul0 = {760, 143, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL_2.bmp")};
 Bullet bul1 = {760, 183, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
-Bullet bul2 = {760, 223, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
+Bullet bul2 = {30, 0, 20, 80, 25, txLoadImage ("SHELL_v.bmp"), txLoadImage ("SHELL_v.bmp"), txLoadImage ("SHELL_v.bmp")};
 Bullet bul3 = {760, 263, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
 Bullet bul4 = {760, 303, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
 Bullet bul5 = {760, 343, 80, 20, 25, txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL.bmp"), txLoadImage ("SHELL2.bmp")};
-
+Bullet las0 = {400, 100, 800, 65, 25, txLoadImage ("Laser-1.bmp"), txLoadImage ("Laser-1.bmp"), txLoadImage ("Laser0.bmp")};
 
 
 bul0.image = bul0.image_normal;
@@ -444,7 +444,7 @@ txBegin();
          }
 
 
-        if(random > 39 and GOD > 1)
+        if(random > 90 and GOD > 1)
          {
             random = 0;
          }
@@ -554,6 +554,7 @@ txBegin();
 {
     if(GOD < 1)
 {
+dam = 8;
 
     if(random > 1 and random < 30)
     {
@@ -649,11 +650,16 @@ txBegin();
     if(GOD > 1)
 {
 bul0.s = 145;
-dam = 11;
+dam = 33;
 
-    if(random > 10)
+    if(random > 10 && random < 35)
     {
+     bul0.draw();
+     bul0.x -= bul0.s;
+    }
 
+    if(random > 50 && random < 89)
+    {
      bul0.draw();
      bul0.x -= bul0.s;
     }
@@ -665,8 +671,38 @@ dam = 11;
 
         }
 
+    if (random > 15)
+    {
+        bul2.draw();
+        bul2.y += 70;
+    }
+
+    if(random == 10)
+        {
+             bul2.y = 0;
+             bul2.x = stalker.x + 60;
+
+        }
+
+
+    if (random > 15)
+    {
+        las0.draw();
+
+    }
+
+        if(random == 10)
+        {
+
+             bul2.y = stalker.y + 100;
+
+        }
+
+
 }
+
 }
+
 // управлние Сталкером :
 {
 
@@ -706,25 +742,25 @@ dam = 11;
 
         if (GetAsyncKeyState(VK_RIGHT))
          {
-            stalker.x += 8;
+            stalker.x += 21;
 
          }
 
             if (stalker.x > 205)
          {
-            stalker.x -=8;
+            stalker.x -=21;
 
          }
 
         if (GetAsyncKeyState(VK_LEFT))
          {
-            stalker.x -= 8;
+            stalker.x -= 21;
 
          }
 
             if (stalker.x < 0)
                 {
-            stalker.x += 8;
+            stalker.x += 21;
 
          }
 }
@@ -740,10 +776,12 @@ dam = 11;
     {
           hp -= 6;
     }
+
     if (bul2.x<stalker.x+stalker.w && bul2.x+bul0.w>stalker.x && bul2.y>stalker.y && bul2.y+bul2.h<stalker.y+stalker.h)
     {
-          hp -= 6;
+          hp -= dam;
     }
+
     if (bul3.x<stalker.x+stalker.w && bul3.x+bul0.w>stalker.x && bul3.y>stalker.y && bul3.y+bul3.h<stalker.y+stalker.h)
     {
           hp -= 6;
@@ -757,17 +795,18 @@ dam = 11;
           hp -= 6;
     }
 
+
+    if (las0.x<stalker.x+stalker.w && las0.x+las0.w>stalker.x && las0.y>stalker.y && las0.y+las0.h<stalker.y+stalker.h)
+    {
+          hp -= dam + 10;
+    }
+
+
     sprintf(str, "Здоровье- %d", hp);
     txTextOut(0, 0, str);
 
 
 }
-
-
-
-
-
-
 
     }
 
