@@ -128,7 +128,7 @@ int main()
 int GOD = 0;
 string PAGE = "menu";
 int random = 0;
-int hp = 800;
+int hp = 1000;
 int hard = 0;
 int SCARY = 0;
 int yText = 500;
@@ -444,7 +444,7 @@ txBegin();
          }
 
 
-        if(random > 39 and GOD > 1)
+        if(random > 90 and GOD > 1)
          {
             random = 0;
          }
@@ -497,7 +497,10 @@ txBegin();
         fon.image = fon.image_scary;
         }
 
-
+        if(Score > 1501 && Score < 1545)
+        {
+         hp = 150;
+        }
 
 
         if(SCARY == 666 and Score > 2999)
@@ -518,7 +521,7 @@ txBegin();
 
         }
 
-
+        if(Score > 3999)
 
 
 // <JCQ#+
@@ -536,6 +539,7 @@ txBegin();
     if (GOD > 1)
     {
         hard = 6666;
+        hp = 666;
         bul0.image = bul0.image_angel;
         bul1.image = bul1.image_angel;
         bul2.image = bul2.image_angel;
@@ -552,7 +556,7 @@ txBegin();
 }
 // генерация снарядов :
 {
-    if(GOD < 1)
+if(GOD < 1)
 {
 dam = 8;
 
@@ -646,15 +650,21 @@ dam = 8;
         }
 }
 
+//-------------------------------------------------------------------------------------------------------------------------- |
 
-    if(GOD > 1)
+if(GOD > 1)
 {
 bul0.s = 145;
 dam = 33;
 
-    if(random > 10)
+    if(random > 10 && random < 35)
     {
+     bul0.draw();
+     bul0.x -= bul0.s;
+    }
 
+    if(random > 50 && random < 89)
+    {
      bul0.draw();
      bul0.x -= bul0.s;
     }
@@ -669,7 +679,7 @@ dam = 33;
     if (random > 15)
     {
         bul2.draw();
-        bul2.y += 70;
+        bul2.y += 35;
     }
 
     if(random == 10)
@@ -680,7 +690,7 @@ dam = 33;
         }
 
 
-    if (random > 15 and SCORE > 3999)
+    if (random > 15)
     {
         las0.draw();
 
@@ -688,8 +698,8 @@ dam = 33;
 
         if(random == 10)
         {
-             las0.y = 0;
-             bul2.x = stalker.x + 60;
+
+             bul2.y = stalker.y + 100;
 
         }
 
@@ -737,25 +747,25 @@ dam = 33;
 
         if (GetAsyncKeyState(VK_RIGHT))
          {
-            stalker.x += 8;
+            stalker.x += 21;
 
          }
 
             if (stalker.x > 205)
          {
-            stalker.x -=8;
+            stalker.x -=21;
 
          }
 
         if (GetAsyncKeyState(VK_LEFT))
          {
-            stalker.x -= 8;
+            stalker.x -= 21;
 
          }
 
             if (stalker.x < 0)
                 {
-            stalker.x += 8;
+            stalker.x += 21;
 
          }
 }
@@ -790,17 +800,18 @@ dam = 33;
           hp -= 6;
     }
 
+
+    if (las0.x<stalker.x+stalker.w && las0.x+las0.w>stalker.x && las0.y>stalker.y && las0.y+las0.h<stalker.y+stalker.h)
+    {
+          hp -= dam + 10;
+    }
+
+
     sprintf(str, "Здоровье- %d", hp);
     txTextOut(0, 0, str);
 
 
 }
-
-
-
-
-
-
 
     }
 
@@ -858,6 +869,20 @@ dam = 33;
      txDrawText (100, 400, 665, 490, "Или нет?.....");
 
     }
+
+    if(PAGE == "ENDING #3")
+    {
+     txSetColor(TX_RED);
+     txSetFillColor(TX_WHITE);
+     txRectangle(800,600,0,0);
+     txSelectFont ("Areal", 40);
+     txSetColor(TX_BLACK);
+     txSetFillColor(TX_BLACK);
+     txDrawText (100, 100, 665, 190, "Победа!");
+     txDrawText (100, 400, 665, 490, "Истинная концовка");
+
+    }
+
 
     txEnd();
     txSleep(50);

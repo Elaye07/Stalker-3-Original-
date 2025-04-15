@@ -128,7 +128,7 @@ int main()
 int GOD = 0;
 string PAGE = "menu";
 int random = 0;
-int hp = 800;
+int hp = 1000;
 int hard = 0;
 int SCARY = 0;
 int yText = 500;
@@ -389,9 +389,9 @@ txBegin();
     txSelectFont ("Areal", 40);
     txDrawText (0, 0, 260, 80, "(еsc для выхода)  ");
     txDrawText (100, 100, 665, 190, "О игре:");
-    txDrawText (100, 150, 665, 230, "Это игра - пародия на");
+    txDrawText (100, 150, 665, 230, "Это игра - супер трипл эй проект");
     txDrawText (100, 200, 665, 270, ".....");
-    txDrawText (20, 250, 70, 310, " ..............");
+    txDrawText (20, 250, 70, 310, "...Ладно, не прям уж супер.");
     if(GetAsyncKeyState(VK_ESCAPE))
      {
     PAGE = "menu";
@@ -401,8 +401,14 @@ txBegin();
 
     if(PAGE == "game")
     {
-// БАЗА :
+
+//------------------------------------------------------------------------------------------------------------------- |
+
+// БАЗА :                                                                                                             |
 {
+
+
+
         txSetColor(TX_BLACK);
         txSetFillColor(TX_WHITE);
         txRectangle(0,115,325,0);
@@ -497,7 +503,10 @@ txBegin();
         fon.image = fon.image_scary;
         }
 
-
+        if(Score > 1501 && Score < 1545)
+        {
+         hp = 150;
+        }
 
 
         if(SCARY == 666 and Score > 2999)
@@ -518,7 +527,12 @@ txBegin();
 
         }
 
+        if(Score > 3999 && GOD > 1)
+        {
 
+        PAGE = "ENDING #3";
+
+        }
 
 
 // <JCQ#+
@@ -544,15 +558,27 @@ txBegin();
         bul5.image = bul5.image_angel;
 
 
+
     }
 
+    if(Score > 2999 && Score < 3035)
+    {
+
+    hp = 666;
+
+    }
 }
 
 
+
+
 }
-// генерация снарядов :
+
+//------------------------------------------------------------------------------------------------------------------- |
+
+// генерация снарядов :                                                                                               |
 {
-    if(GOD < 1)
+if(GOD < 1)
 {
 dam = 8;
 
@@ -646,11 +672,12 @@ dam = 8;
         }
 }
 
+//-------------------------------------------------------------------------------------------------------------------------- |
 
-    if(GOD > 1)
+if(GOD > 1)
 {
-bul0.s = 145;
-dam = 33;
+bul0.s = 105;
+dam = 30;
 
     if(random > 10 && random < 35)
     {
@@ -674,7 +701,7 @@ dam = 33;
     if (random > 15)
     {
         bul2.draw();
-        bul2.y += 70;
+        bul2.y += 20;
     }
 
     if(random == 10)
@@ -703,7 +730,9 @@ dam = 33;
 
 }
 
-// управлние Сталкером :
+//------------------------------------------------------------------------------------------------------------------- |
+
+// управлние Сталкером :                                                                                              |
 {
 
 
@@ -765,7 +794,9 @@ dam = 33;
          }
 }
 
-// касание снаряда (работает:)) :
+//------------------------------------------------------------------------------------------------------------------- |
+
+// касание снаряда (работает:)) :                                                                                     |
 {
     if (bul0.x<stalker.x+stalker.w && bul0.x+bul0.w>stalker.x && bul0.y>stalker.y && bul0.y+bul0.h<stalker.y+stalker.h)
     {
@@ -807,6 +838,8 @@ dam = 33;
 
 
 }
+
+//------------------------------------------------------------------------------------------------------------------- |
 
     }
 
@@ -865,6 +898,20 @@ dam = 33;
 
     }
 
+    if(PAGE == "ENDING #3")
+    {
+     txSetColor(TX_RED);
+     txSetFillColor(TX_WHITE);
+     txRectangle(800,600,0,0);
+     txSelectFont ("Areal", 40);
+     txSetColor(TX_BLACK);
+     txSetFillColor(TX_BLACK);
+     txDrawText (100, 100, 665, 190, "Победа!");
+     txDrawText (100, 400, 665, 490, "Истинная концовка");
+
+    }
+
+
     txEnd();
     txSleep(50);
 
@@ -875,14 +922,22 @@ txDeleteDC(stalker.image_normal);
 txDeleteDC(stalker.image_scary);
 txDeleteDC(zast.image_normal);
 txDeleteDC(zast.image_scary);
-txDeleteDC(bul5.image);
-txDeleteDC(bul4.image);
-txDeleteDC(bul3.image);
-txDeleteDC(bul2.image);
-txDeleteDC(bul1.image);
-txDeleteDC(bul0.image);
-txDeleteDC(stalker.image);
-txDeleteDC(zast.image);
+txDeleteDC(bul5.image_normal);
+txDeleteDC(bul4.image_normal);
+txDeleteDC(bul3.image_normal);
+txDeleteDC(bul2.image_normal);
+txDeleteDC(bul1.image_normal);
+txDeleteDC(bul0.image_normal);
+txDeleteDC(stalker.image_normal);
+txDeleteDC(zast.image_normal);
+txDeleteDC(bul5.image_angel);
+txDeleteDC(bul4.image_angel);
+txDeleteDC(bul3.image_angel);
+txDeleteDC(bul2.image_angel);
+txDeleteDC(bul1.image_angel);
+txDeleteDC(bul0.image_angel);
+txDeleteDC(stalker.image_scary);
+txDeleteDC(zast.image_scary);
 }
 
 
