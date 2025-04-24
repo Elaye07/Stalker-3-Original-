@@ -128,7 +128,7 @@ int main()
 int GOD = 0;
 string PAGE = "menu";
 int random = 0;
-int hp = 1000;
+int hp = 150;
 int hard = 0;
 int SCARY = 0;
 int yText = 500;
@@ -137,7 +137,7 @@ int dam = 8;
 
 
 Button btn0 = {125, 100, 200, 45, "Start", "Start", "_____", true};
-Button btn1 = {125, 165, 200, 45, "Rules", "Rules", "ОНО", true};
+Button btn1 = {125, 165, 200, 45, "Control", "Control", "ОНО", true};
 Button btn2 = {125, 230, 200, 45, "Settings", "Settings", "УЖЕ", true};
 Button btn3 = {125, 295, 200, 45, "About program", "About program", "БЛИЗКО", true};
 Button btn4 = {125, 370, 200, 45, "Exit", "Exit", "БЕГИ!", true};
@@ -209,6 +209,8 @@ txBegin();
         btn3.visible = true;
         btn4.visible = true;
         btn5.visible = true;
+
+
 
 
         if(btn0.click())
@@ -317,7 +319,7 @@ txBegin();
      txSetColor(TX_RED);
      txSetFillColor(TX_YELLOW);
      txRectangle(800,600,0,0);
-     txDrawText (500, 0, 820, 80, "стрелка вверх - ........");
+     txDrawText (500, 0, 820, 80, "стрелка вверх - .?1.!.%:*2");
      txSelectFont ("Areal", 40);
      txDrawText (0, 0, 260, 80, "(еsc для выхода)  ");
      txDrawText (100, 100, 665, 190, "Правила игры:");
@@ -391,7 +393,9 @@ txBegin();
     txDrawText (100, 100, 665, 190, "О игре:");
     txDrawText (100, 150, 665, 230, "Это игра - супер трипл эй проект");
     txDrawText (100, 200, 665, 270, ".....");
-    txDrawText (20, 250, 70, 310, "...Ладно, не прям уж супер.");
+    txDrawText (20, 250, 720, 310, "...Ладно, не прям уж супер.");
+    txDrawText (20, 340, 720, 400, "И не прям уж трипл эй......");
+    txDrawText (20, 440, 720, 500, "Автор - *******************");
     if(GetAsyncKeyState(VK_ESCAPE))
      {
     PAGE = "menu";
@@ -533,6 +537,15 @@ txBegin();
         PAGE = "ENDING #3";
 
         }
+
+
+       if(Score < 5 && SCARY < 666)
+        {
+
+        txPlaySound ("Музыка1.wav");
+
+        }
+
 
 
 // <JCQ#+
@@ -939,6 +952,7 @@ txDeleteDC(bul0.image_angel);
 txDeleteDC(stalker.image_scary);
 txDeleteDC(zast.image_scary);
 }
+
 
 
 txDisableAutoPause();

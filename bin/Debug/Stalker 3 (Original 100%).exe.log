@@ -1,0 +1,778 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x7F4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:931:
+
+    929: txDeleteDC(bul1.image_normal);
+    930: txDeleteDC(bul0.image_normal);
+=>  931: txDeleteDC(stalker.image_normal);
+    932: txDeleteDC(zast.image_normal);
+    933: txDeleteDC(bul5.image_angel);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 22 2025 09:41:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 08:54:29
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x1524 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:931:
+
+    929: txDeleteDC(bul1.image_normal);
+    930: txDeleteDC(bul0.image_normal);
+=>  931: txDeleteDC(stalker.image_normal);
+    932: txDeleteDC(zast.image_normal);
+    933: txDeleteDC(bul5.image_angel);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 22 2025 09:41:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:06:43
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13751, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x111C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13751:
+
+  13749: 
+  13750: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13751: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13752: 
+  13753:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void Stalker::draw() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:79:
+
+     77: 
+     78: 
+=>   79:     txTransparentBlt(txDC(), x, y, w, h, image, 0, 0, TX_WHITE);
+     80: 
+     81: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 22 2025 09:41:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:08:43
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13751, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x1E80 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13751:
+
+  13749: 
+  13750: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13751: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13752: 
+  13753:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void Stalker::draw() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:79:
+
+     77: 
+     78: 
+=>   79:     txTransparentBlt(txDC(), x, y, w, h, image, 0, 0, TX_WHITE);
+     80: 
+     81: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 22 2025 09:41:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:08:54
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13751, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x1CC4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13751:
+
+  13749: 
+  13750: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13751: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13752: 
+  13753:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void Stalker::draw() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:79:
+
+     77: 
+     78: 
+=>   79:     txTransparentBlt(txDC(), x, y, w, h, image, 0, 0, TX_WHITE);
+     80: 
+     81: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 24 2025 09:11:10, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:11:38
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13751, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0xD14 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13751:
+
+  13749: 
+  13750: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13751: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13752: 
+  13753:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void Stalker::draw() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:79:
+
+     77: 
+     78: 
+=>   79:     txTransparentBlt(txDC(), x, y, w, h, image, 0, 0, TX_WHITE);
+     80: 
+     81: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 24 2025 09:11:48, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:12:27
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x1FA0 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:931:
+
+    929: txDeleteDC(bul1.image_normal);
+    930: txDeleteDC(bul0.image_normal);
+=>  931: txDeleteDC(stalker.image_normal);
+    932: txDeleteDC(zast.image_normal);
+    933: txDeleteDC(bul5.image_angel);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 24 2025 09:11:48, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:13:32
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x1F80 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:933:
+
+    931: txDeleteDC(bul1.image_normal);
+    932: txDeleteDC(bul0.image_normal);
+=>  933: txDeleteDC(stalker.image_normal);
+    934: txDeleteDC(zast.image_normal);
+    935: txDeleteDC(bul5.image_angel);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 24 2025 09:15:29, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:15:54
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x189C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:934:
+
+    932: txDeleteDC(bul1.image_normal);
+    933: txDeleteDC(bul0.image_normal);
+=>  934: txDeleteDC(stalker.image_normal);
+    935: txDeleteDC(zast.image_normal);
+    936: txDeleteDC(bul5.image_angel);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 24 2025 09:49:39, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:50:05
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x13B8 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:944:
+
+    942: txDeleteDC(bul1.image_normal);
+    943: txDeleteDC(bul0.image_normal);
+=>  944: txDeleteDC(stalker.image_normal);
+    945: txDeleteDC(zast.image_normal);
+    946: txDeleteDC(bul5.image_angel);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 24 2025 09:51:23, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:51:49
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x23BC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:944:
+
+    942: txDeleteDC(bul1.image_normal);
+    943: txDeleteDC(bul0.image_normal);
+=>  944: txDeleteDC(stalker.image_normal);
+    945: txDeleteDC(zast.image_normal);
+    946: txDeleteDC(bul5.image_angel);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 24 2025 09:52:31, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:52:57
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10937, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x1ABC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:10937:
+
+  10935: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10936: $   if (                   !*dc)  return false;
+=>10937: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10938: 
+  10939: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13691:
+
+  13689: 
+  13690: $   HDC  dc = *pdc;
+=>13691: $   bool ok = _txBuffer_Delete (pdc);
+  13692: $   if (!ok) return false;
+  13693: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13713:
+
+  13711: bool txDeleteDC (HDC dc)
+  13712:     {
+=>13713: $1  return txDeleteDC (&dc);
+  13714:     }
+  13715: 
+
+# 3 in int main() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:944:
+
+    942: txDeleteDC(bul1.image_normal);
+    943: txDeleteDC(bul0.image_normal);
+=>  944: txDeleteDC(stalker.image_normal);
+    945: txDeleteDC(zast.image_normal);
+    946: txDeleteDC(bul5.image_angel);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 24 2025 09:55:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:56:07
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13751, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x1C98 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h:13751:
+
+  13749: 
+  13750: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13751: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13752: 
+  13753:     // Это автоматическое определение размеров картинки (точнее, HDC источника - source) с помощью txGetExtent().
+
+# 1 in void Stalker::draw() at C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\main.cpp:79:
+
+     77: 
+     78: 
+=>   79:     txTransparentBlt(txDC(), x, y, w, h, image, 0, 0, TX_WHITE);
+     80: 
+     81: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 24 2025 09:59:22, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Apr 24 2025 09:59:47
+
+Run file:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main\bin\Debug\Stalker 3 (Original 100%).exe
+Directory:	C:\Users\2023\Downloads\Stalker-3-Original--main\Stalker-3-Original--main
+
+--------------------------------------------------

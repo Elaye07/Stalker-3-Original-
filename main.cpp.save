@@ -128,7 +128,7 @@ int main()
 int GOD = 0;
 string PAGE = "menu";
 int random = 0;
-int hp = 1000;
+int hp = 150;
 int hard = 0;
 int SCARY = 0;
 int yText = 500;
@@ -137,7 +137,7 @@ int dam = 8;
 
 
 Button btn0 = {125, 100, 200, 45, "Start", "Start", "_____", true};
-Button btn1 = {125, 165, 200, 45, "Rules", "Rules", "ОНО", true};
+Button btn1 = {125, 165, 200, 45, "Control", "Control", "ОНО", true};
 Button btn2 = {125, 230, 200, 45, "Settings", "Settings", "УЖЕ", true};
 Button btn3 = {125, 295, 200, 45, "About program", "About program", "БЛИЗКО", true};
 Button btn4 = {125, 370, 200, 45, "Exit", "Exit", "БЕГИ!", true};
@@ -209,6 +209,8 @@ txBegin();
         btn3.visible = true;
         btn4.visible = true;
         btn5.visible = true;
+
+
 
 
         if(btn0.click())
@@ -317,7 +319,7 @@ txBegin();
      txSetColor(TX_RED);
      txSetFillColor(TX_YELLOW);
      txRectangle(800,600,0,0);
-     txDrawText (500, 0, 820, 80, "стрелка вверх - ........");
+     txDrawText (500, 0, 820, 80, "стрелка вверх - .?1.!.%:*2");
      txSelectFont ("Areal", 40);
      txDrawText (0, 0, 260, 80, "(еsc для выхода)  ");
      txDrawText (100, 100, 665, 190, "Правила игры:");
@@ -389,9 +391,11 @@ txBegin();
     txSelectFont ("Areal", 40);
     txDrawText (0, 0, 260, 80, "(еsc для выхода)  ");
     txDrawText (100, 100, 665, 190, "О игре:");
-    txDrawText (100, 150, 665, 230, "Это игра - пародия на");
+    txDrawText (100, 150, 665, 230, "Это игра - супер трипл эй проект");
     txDrawText (100, 200, 665, 270, ".....");
-    txDrawText (20, 250, 70, 310, " ..............");
+    txDrawText (20, 250, 720, 310, "...Ладно, не прям уж супер.");
+    txDrawText (20, 340, 720, 400, "И не прям уж трипл эй......");
+    txDrawText (20, 440, 720, 500, "Автор - *******************");
     if(GetAsyncKeyState(VK_ESCAPE))
      {
     PAGE = "menu";
@@ -401,8 +405,14 @@ txBegin();
 
     if(PAGE == "game")
     {
-// БАЗА :
+
+//------------------------------------------------------------------------------------------------------------------- |
+
+// БАЗА :                                                                                                             |
 {
+
+
+
         txSetColor(TX_BLACK);
         txSetFillColor(TX_WHITE);
         txRectangle(0,115,325,0);
@@ -512,7 +522,7 @@ txBegin();
         god.draw();
          }
 
-        if(GetAsyncKeyState(VK_UP))
+        if(GetAsyncKeyState(VK_UPf))
         {
 
         stalker.image = stalker.image_scary;
@@ -521,7 +531,21 @@ txBegin();
 
         }
 
-        if(Score > 3999)
+        if(Score > 3999 && GOD > 1)
+        {
+
+        PAGE = "ENDING #3";
+
+        }
+
+
+       if(Score < 5 && Scary < 666)
+        {
+
+        txPlaySound ("Музыка1.wav");
+
+        }
+
 
 
 // <JCQ#+
@@ -539,7 +563,6 @@ txBegin();
     if (GOD > 1)
     {
         hard = 6666;
-        hp = 666;
         bul0.image = bul0.image_angel;
         bul1.image = bul1.image_angel;
         bul2.image = bul2.image_angel;
@@ -548,13 +571,25 @@ txBegin();
         bul5.image = bul5.image_angel;
 
 
+
     }
 
+    if(Score > 2999 && Score < 3035)
+    {
+
+    hp = 666;
+
+    }
 }
 
 
+
+
 }
-// генерация снарядов :
+
+//------------------------------------------------------------------------------------------------------------------- |
+
+// генерация снарядов :                                                                                               |
 {
 if(GOD < 1)
 {
@@ -654,8 +689,8 @@ dam = 8;
 
 if(GOD > 1)
 {
-bul0.s = 145;
-dam = 33;
+bul0.s = 105;
+dam = 30;
 
     if(random > 10 && random < 35)
     {
@@ -679,7 +714,7 @@ dam = 33;
     if (random > 15)
     {
         bul2.draw();
-        bul2.y += 35;
+        bul2.y += 20;
     }
 
     if(random == 10)
@@ -708,7 +743,9 @@ dam = 33;
 
 }
 
-// управлние Сталкером :
+//------------------------------------------------------------------------------------------------------------------- |
+
+// управлние Сталкером :                                                                                              |
 {
 
 
@@ -770,7 +807,9 @@ dam = 33;
          }
 }
 
-// касание снаряда (работает:)) :
+//------------------------------------------------------------------------------------------------------------------- |
+
+// касание снаряда (работает:)) :                                                                                     |
 {
     if (bul0.x<stalker.x+stalker.w && bul0.x+bul0.w>stalker.x && bul0.y>stalker.y && bul0.y+bul0.h<stalker.y+stalker.h)
     {
@@ -812,6 +851,8 @@ dam = 33;
 
 
 }
+
+//------------------------------------------------------------------------------------------------------------------- |
 
     }
 
@@ -894,16 +935,32 @@ txDeleteDC(stalker.image_normal);
 txDeleteDC(stalker.image_scary);
 txDeleteDC(zast.image_normal);
 txDeleteDC(zast.image_scary);
-txDeleteDC(bul5.image);
-txDeleteDC(bul4.image);
-txDeleteDC(bul3.image);
-txDeleteDC(bul2.image);
-txDeleteDC(bul1.image);
-txDeleteDC(bul0.image);
-txDeleteDC(stalker.image);
-txDeleteDC(zast.image);
+txDeleteDC(bul5.image_normal);
+txDeleteDC(bul4.image_normal);
+txDeleteDC(bul3.image_normal);
+txDeleteDC(bul2.image_normal);
+txDeleteDC(bul1.image_normal);
+txDeleteDC(bul0.image_normal);
+txDeleteDC(stalker.image_normal);
+txDeleteDC(zast.image_normal);
+txDeleteDC(bul5.image_angel);
+txDeleteDC(bul4.image_angel);
+txDeleteDC(bul3.image_angel);
+txDeleteDC(bul2.image_angel);
+txDeleteDC(bul1.image_angel);
+txDeleteDC(bul0.image_angel);
+txDeleteDC(stalker.image_scary);
+txDeleteDC(zast.image_scary);
 }
 
+//Музыка:  (пока нет)
+{
+
+
+
+
+
+}
 
 txDisableAutoPause();
 return 0;
